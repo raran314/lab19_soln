@@ -60,17 +60,18 @@ let rec offset (index : int) (off : int) : int =
    implementation, after updating as per the standard GoL update rule,
    a cell's state is then flipped with probability given by
    cRANDOMNESS. *)
-let life_update (grid : life_state array array) (i : int) (j : int) : life_state =
+let life_update (grid : life_state array array) (i : int) (j : int)
+              : life_state =
 
   (* We give a few variant update rules for the Game of Life. These
      lists are indexed by adjacency count to give the generated cell
      status.
-                       0     1     2     3     4     5     6     7     8  
-                       |     |     |     |     |     |     |     |     |
-                       v     v     v     v     v     v     v     v     v   *)
+                          0     1     2     3     4     5     6     7     8  
+                          |     |     |     |     |     |     |     |     |
+                          v     v     v     v     v     v     v     v     v   *)
   (* B3/S23: Conway's original game of life *)
-  let dead_update = [Dead; Dead; Dead; Live; Dead; Dead; Dead; Dead; Dead] in
-  let live_update = [Dead; Dead; Live; Live; Dead; Dead; Dead; Dead; Dead] in
+     let dead_update = [Dead; Dead; Dead; Live; Dead; Dead; Dead; Dead; Dead] in
+     let live_update = [Dead; Dead; Live; Live; Dead; Dead; Dead; Dead; Dead] in
 
   (* B3/S12345: https://conwaylife.com/wiki/OCA:Maze
      let dead_update = [Dead; Dead; Dead; Live; Dead; Dead; Dead; Dead; Dead] in
@@ -147,10 +148,10 @@ let random_grid count =
   the_grid ;;                       
 
 (*......................................................................
-  Running the game and displaying the results
+  Running the automaton and displaying the results
  *)
 
-(* main seed -- Runs the game using the provided random `seed` (for
+(* main seed -- Runs the automaton using the provided random `seed` (for
    replicability), displaying updates to the graphics window. *)
 let main seed =
   
@@ -161,7 +162,7 @@ let main seed =
     random_grid (cGRID_SIZE * cGRID_SIZE / cSPARSITY) in
   Aut.run_grid initial_grid ;;
 
-(* Run the game with user-supplied seed *)
+(* Run the automaton with user-supplied seed *)
 let _ =
   if Array.length Sys.argv <= 1 then
     Printf.printf "Usage: %s <seed>\n  where <seed> is integer seed\n"

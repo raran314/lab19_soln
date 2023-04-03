@@ -1,8 +1,8 @@
 (*
                              CS 51 Lab 19
                 Greenberg-Hastings Cellular Automaton
- *)
-(*
+ https://en.wikipedia.org/wiki/Greenberg–Hastings_cellular_automaton
+
     **************************************************************
     WARNING: If you have photosensitive epilepsy, you should avoid
     viewing the Greenberg-Hastings cellular automaton. It exhibits

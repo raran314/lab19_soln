@@ -1,18 +1,24 @@
 (*
                           CS 51 Problem Set
                 Reaction-Diffusion Cellular Automaton
+
+    **************************************************************
+    WARNING: If you have photosensitive epilepsy, you should avoid
+    viewing the reaction-diffusion cellular automaton. It exhibits
+    rapidly flashing visual patterns.
+    **************************************************************
  *)
 
 module G = Graphics ;;
   
 (* Automaton parameters *)
-let cGRID_SIZE = 100 ;;       (* width and height of grid in cells *)
-let cSPARSITY = 5 ;;          (* inverse of proportion of cells initially live *)
+let cGRID_SIZE = 100 ;;     (* width and height of grid in cells *)
+let cSPARSITY = 5 ;;        (* inverse of proportion of cells initially live *)
 
 (* Rendering parameters *)
 let cCOLOR_LEGEND = G.rgb 173 106 108 ;;  (* color for textual legend *)
-let cSIDE = 8 ;;              (* width and height of cells in pixels *)
-let cRENDER_FREQUENCY = 1     (* how frequently grid is rendered (in ticks) *) ;;
+let cSIDE = 8 ;;            (* width and height of cells in pixels *)
+let cRENDER_FREQUENCY = 1   (* how frequently grid is rendered (in ticks) *) ;;
 let cFONT = Some "-adobe-times-bold-r-normal--34-240-100-100-p-177-iso8859-9"
 
 type rd_state = float
@@ -37,7 +43,10 @@ let rd_update (grid : rd_state array array) (i : int) (j : int) =
     done
   done;
   let norm = !neighbors /. 8. in
-  let reacted = norm -. 12. *. (norm -. 0.1) *. (norm -. 0.5) *. (norm -. 0.9) in
+  let reacted = norm -. 12.
+                        *. (norm -. 0.1)
+                        *. (norm -. 0.5)
+                        *. (norm -. 0.9) in
   let clipped = min 1. (max 0. reacted) in
   clipped ;;
  
@@ -76,11 +85,11 @@ let random_grid count =
   mat ;;                       
 
 (*......................................................................
-  Running the game and displaying the results
+  Running the automaton and displaying the results
  *)
 
-(* main seed -- Runs the game using the provided random `seed` (for
-   replicability), displaying updates to the graphics window. *)
+(* main seed -- Runs the automaton using the provided random `seed`
+   (for replicability), displaying updates to the graphics window. *)
 let main seed =
   
   Random.init seed;      (* initialize randomness *)
@@ -89,7 +98,7 @@ let main seed =
   let initial_grid = random_grid (cGRID_SIZE * cGRID_SIZE / cSPARSITY) in
   Aut.run_grid initial_grid ;;
 
-(* Run the game with user-supplied seed *)
+(* Run the automaton with user-supplied seed *)
 let _ =
   if Array.length Sys.argv <= 1 then
     Printf.printf "Usage: %s <seed>\n  where <seed> is integer seed\n"

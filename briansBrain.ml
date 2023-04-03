@@ -1,21 +1,22 @@
 (*
                              CS 51 Lab 19
                    Brian's Brain Cellular Automaton
+	     https://en.wikipedia.org/wiki/Brian's_Brain
  *)
 
 module G = Graphics ;;
   
 (* Automaton parameters *)
-let cGRID_SIZE = 100 ;;       (* width and height of grid in cells *)
-let cSPARSITY = 5 ;;          (* inverse of proportion of cells initially live *)
+let cGRID_SIZE = 100 ;;   (* width and height of grid in cells *)
+let cSPARSITY = 5 ;;      (* inverse of proportion of cells initially live *)
 
 (* Rendering parameters *)
-let cCOLOR_LIVE = G.rgb 200 200 200 ;;       (* color to depict live cells *)
-let cCOLOR_DYING = G.rgb 130 0 0 ;;   (* color to depict dying cells *)
+let cCOLOR_LIVE = G.rgb 200 200 200 ;;    (* color to depict live cells *)
+let cCOLOR_DYING = G.rgb 130 0 0 ;;       (* color to depict dying cells *)
 let cCOLOR_DEAD = G.rgb 0 0 0 ;;          (* background color *)
 let cCOLOR_LEGEND = G.rgb 173 106 108 ;;  (* color for textual legend *)
-let cSIDE = 8 ;;              (* width and height of cells in pixels *)
-let cRENDER_FREQUENCY = 1     (* how frequently grid is rendered (in ticks) *) ;;
+let cSIDE = 8 ;;            (* width and height of cells in pixels *)
+let cRENDER_FREQUENCY = 1   (* how frequently grid is rendered (in ticks) *) ;;
 let cFONT = Some "-adobe-times-bold-r-normal--34-240-100-100-p-177-iso8859-9"
               
 (*----------------------------------------------------------------------

@@ -36,6 +36,7 @@ module type AUT_SPEC =
                                (* update grid i j -- returns the new
                                   state for the cell at position `i, j`
                                   in `grid` *)
+                                                        
     (* Rendering parameters *)
     val name : string          (* a display name for the automaton *)
     val side_size : int        (* width and height of cells in pixels *)
