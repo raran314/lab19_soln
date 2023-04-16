@@ -24,7 +24,7 @@ module G = Graphics ;;
 
   In this implementation, a particular kind of automaton, with its
   state space and update function, is specified by a module satisfying
-  the `AUT_SPEC` signature. *)
+  the `AUT_SPEC` signature *)
    
 module type AUT_SPEC =
   sig
